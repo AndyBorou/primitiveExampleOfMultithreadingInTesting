@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TestSuite">
+
+  <parameter name="paramName1"  value="iPhone"/>
+
+  <test name="testNgTest">
+    <packages>
+      <package name="test1"/>
+    </packages>
+  </test>
+
+</suite>
