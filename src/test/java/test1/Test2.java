@@ -1,9 +1,16 @@
 package test1;
 
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class Test2 {
+
+
+    @BeforeClass
+    private void beforeMethod(){
+        System.out.println("parallel thread");
+    }
 
     //@parallel у дата провайдера в true, тогда тесты для каждого набора данных будут запущены паралельно, в отдельном потоке:
 
@@ -23,7 +30,7 @@ public class Test2 {
         };
     }
 
-    @Test(dataProvider = "concurrencyData")
+    @Test(dataProvider = "concurrencyData", alwaysRun = true)
     public void testParallelData(String first, String second) {
         final Thread thread = Thread.currentThread();
         System.out.printf("# thread id: %d, thread name: %s: %s : %s", thread.getId(),

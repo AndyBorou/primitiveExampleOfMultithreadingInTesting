@@ -25,8 +25,9 @@ public class Test1 {
 //    invocationCount определяет количество запусков теста.
 //    invocationTimeOut определяет общее время всех запусков теста, после которого тест считается провалившемся.
 
-    @Test(threadPoolSize = 10, invocationCount = 10, invocationTimeOut = 100)
+    @Test(threadPoolSize = 10, invocationCount = 10, invocationTimeOut = 100, alwaysRun = true)
     public void testMapOperations(){
+        System.out.println("parallel thread threadPoolSize");
         data.put("1", "11");
         data.put("2", "22");
         data.put("3", "33");
@@ -40,18 +41,20 @@ public class Test1 {
         data.clear();
     }
 
-    @Test(singleThreaded = true, invocationCount = 100, invocationTimeOut = 10000)
+    @Test(singleThreaded = true, invocationCount = 10, invocationTimeOut = 10000, alwaysRun = true)
     public void testMapOperationsSafe(){
-        data.put("1", "111");
-        data.put("2", "111");
-        data.put("3", "111");
-        data.put("4", "111");
-        data.put("5", "111");
-        data.put("6", "111");
-        data.put("7", "111");
+        System.out.println("one thread");
+        data.put("1", "101");
+        data.put("2", "102");
+        data.put("3", "103");
+        data.put("4", "104");
+        data.put("5", "105");
+        data.put("6", "106");
+        data.put("7", "107");
         for (Map.Entry<String, String> entry : data.entrySet()) {
             System.out.println(entry);
         }
         data.clear();
+        System.out.println();
     }
 }
